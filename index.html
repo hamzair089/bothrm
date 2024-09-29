@@ -1,38 +1,47 @@
+<!doctype html>
 <html>
-// Import the Botpress WebChat JavaScript file
-    <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
-    
-    // Initialize the Botpress WebChat with the required parameters
-    <script>
-        window.botpressWebChat.init({
-            // Replace <your-bot-id> and <your-client-id> with your actual bot and client IDs
-            "botId": "7b65f5c9-db47-4f97-95e1-56516172f58a",
-            "clientId": "3cad505b-394b-4e7e-81d0-8baf1ff45ce",
-    
-            // Set the URL for the Botpress WebChat JavaScript file and the messaging server
-            "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
-            "messagingUrl": "https://messaging.botpress.cloud",
-    
-            // Set the name of the bot that will be displayed in the WebChat interface
-            "botName": "Test",
-    
-            // Set the width of the WebChat container and layout to 100% (Full Screen)
-            "containerWidth": "100%25",
-            "layoutWidth": "100%25",
-    
-            // Hide the widget and disable animations
-            "hideWidget": true,
-            "disableAnimations": true,
-        });
-    
-        // Opens up the Chatbot by default
-        // This lets users start chatting with the Chatbot without needing to click any buttons or menus.
-        window.botpressWebChat.onEvent(
-            function () {
-                window.botpressWebChat.sendEvent({ type: "show" });
-            },
-            ["LIFECYCLE.LOADED"]
-        );
-    </script>
+  <!-- 
+    Thank you to the Botpress community (https://discord.com/channels/1108396290624213082) for their suggestions regarding this example.
+    A special greeting to François, aka 000Bo, for his post: https://discord.com/channels/1108396290624213082/1272227414197669960
+  -->
+  <head>
+    <meta charset="UTF-8" />
+    <title>Botpress Full-Screen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <style>
+      body {
+        display: flex;
+        flex-direction: column; // 000Bo
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: white;
+        background-color: #000000;
+        font-family: Arial, sans-serif;
+      }
+
+      /**
+       * BOTPRESS CUSTOM STYLES
+       */
+      @media (min-width:768px) {
+        .bpOpen { width: 100%; height: 100%; right: 0; bottom: 0; max-height: 100%; overflow: auto; -webkit-overflow-scrolling: touch; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h2>Assistente Credipass</h2>
+    </header>
+    <script src="https://cdn.botpress.cloud/webchat/v2.1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/26a83f89-ace1-4045-92ba-95b836f75669/webchat/v2.1/config.js"></script>
+    <script>
+      // Open webchat
+      window.botpress.on("webchat:ready", (conversationId) => {
+        botpress.open()
+      })
+    </script>
+  </body>
 </html>
