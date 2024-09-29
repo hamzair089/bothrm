@@ -11,14 +11,49 @@
             height: 100%;
             overflow: hidden;
         }
-        iframe {
+        #bp-webchat {
             width: 100%;
             height: 100%;
-            border: none;
         }
     </style>
 </head>
 <body>
-    <iframe src="https://cdn.botpress.cloud/webchat/v1/chat.html?botId=7b65f5c9-db47-4f97-95e1-56516172f58a&clientId=3cad505b-394b-4e7e-81d0-8baf1ff45cee"></iframe>
+    <!-- This div will host the chatbot -->
+    <div id="bp-webchat"></div>
+
+    <!-- Import the Botpress WebChat JavaScript file -->
+    <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
+
+    <!-- Initialize the Botpress WebChat with the required parameters -->
+    <script>
+        window.botpressWebChat.init({
+            // Replace with your actual bot and client IDs
+            "botId": "7b65f5c9-db47-4f97-95e1-56516172f58a",
+            "clientId": "3cad505b-394b-4e7e-81d0-8baf1ff45cee",
+
+            // Set the URL for the Botpress WebChat JavaScript file and the messaging server
+            "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
+            "messagingUrl": "https://messaging.botpress.cloud",
+
+            // Set the name of the bot that will be displayed in the WebChat interface
+            "botName": "Test Bot",
+
+            // Set the width of the WebChat container and layout to 100% (Full Screen)
+            "containerWidth": "100%",
+            "layoutWidth": "100%",
+
+            // Hide the widget and disable animations
+            "hideWidget": true,
+            "disableAnimations": true,
+        });
+
+        // Opens up the Chatbot by default
+        window.botpressWebChat.onEvent(
+            function () {
+                window.botpressWebChat.sendEvent({ type: "show" });
+            },
+            ["LIFECYCLE.LOADED"]
+        );
+    </script>
 </body>
 </html>
