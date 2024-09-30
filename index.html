@@ -3,67 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Botpress Fullscreen Chatbot</title>
     <style>
-        body {
-          display: flex;
-          flex-direction : column;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          margin: 0;
-          color: white;
-          background-color: #000000;
-          font-family: Arial, sans-serif;
-        }
-   
-        .center-div {
-          width: 50vw;
-          height: 80vh;
-          background-color: rgb(102, 71, 255);
-          border-radius: 15px;
-          padding: 5px;
-          box-sizing: border-box;
-          color: white;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-        }
-   
-        @media only screen and (max-width: 600px) {
-          .center-div {
-            height: 40vh;
-            width: 80vw;
-            background-color: rgb(102, 71, 255);
-            border-radius: 15px;
-            padding: 5px;
-            box-sizing: border-box;
-            color: white;
+        /* Set the body to take full height and width */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
-          }
+            background-color: #000000;
+            color: white;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
         }
-      </style>
+
+        /* Ensure that the chatbot div occupies full screen */
+        .center-div {
+            width: 100vw; /* Full width */
+            height: 100vh; /* Full height */
+            background-color: rgb(102, 71, 255);
+            border-radius: 0; /* Remove border-radius for full-screen */
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        iframe {
+            width: 100%;  /* Full width */
+            height: 100%; /* Full height */
+            border: none; /* Remove any border */
+        }
+
+        /* Adjust the layout for mobile devices */
+        @media only screen and (max-width: 600px) {
+            .center-div {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h2>This is my header</h2>
-    </header>
-    <div>
-        <p style="text-align: center;">Botpress Chatbot in a <span><</span><span>div></span></p>
-        <div>
-          <div class="center-div">
-          <iframe
-          srcdoc="<script src='https://cdn.botpress.cloud/webchat/v2.1/inject.js'></script>
+    <div class="center-div">
+        <iframe
+        srcdoc="<script src='https://cdn.botpress.cloud/webchat/v2.1/inject.js'></script>
 <script src='https://mediafiles.botpress.cloud/7b65f5c9-db47-4f97-95e1-56516172f58a/webchat/v2.1/config.js'></script>
-            <script>botpress.open()</script>" 
-          style="width: 100%; height: 100%; border: none;"></iframe> <!-- Put your embed code inside the srccode of the iframe -->
-          </div>
-        </div>
-      </div>    
-
+<script>botpress.open()</script>" 
+        style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
 </body>
 </html>
