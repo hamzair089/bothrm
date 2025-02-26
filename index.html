@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chatbot Integration</title>
-  <style>
-    /* Apply styles for the full-page background image */
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background-image: url('assets/images/screen 1.png'); /* Replace with your image URL */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      font-family: Arial, sans-serif;
-      color: white;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    h1, p {
-      margin: 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botpress Chatbot</title>
 </head>
 <body>
-  <h1>Welcome</h1>
-  <p>This page has a full-page background image with a chatbot integrated.</p>
 
-  
-    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2025/01/28/02/20250128021606-CH78HX5L.js"></script>
-    
+    <h1>Welcome to Our Website</h1>
+    <p>Chat with our bot for assistance.</p>
+
+    <!-- Import the Botpress WebChat JavaScript file -->
+    <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
+
+    <!-- Initialize the Botpress WebChat with the required parameters -->
+    <script>
+        window.botpressWebChat.init({
+            "botId": "20250128021606-7OPYWP3Z",  // Replace with your actual Bot ID
+            "clientId": "4c4469a5-b279-4515-89a4-b7413126a2de", // Replace with your actual Client ID
+            "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
+            "messagingUrl": "https://messaging.botpress.cloud",
+            "botName": "Test",
+            "containerWidth": "100%",
+            "layoutWidth": "100%",
+            "hideWidget": true,
+            "disableAnimations": true,
+        });
+
+        // Open the chatbot automatically when the page loads
+        window.botpressWebChat.onEvent(
+            function () {
+                window.botpressWebChat.sendEvent({ type: "show" });
+            },
+            ["LIFECYCLE.LOADED"]
+        );
+    </script>
+
 </body>
 </html>
